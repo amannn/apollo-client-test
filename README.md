@@ -1,6 +1,6 @@
 # apollo-client-test
 
-Quick-and-dirty setup for testing some features of [Apollo](apollostack.com).
+Quick-and-dirty setup for testing some features of [Apollo](http://apollostack.com).
 
 This project consists of the server at [amannn/apollo-server-test](https://github.com/amannn/apollo-server-test) and the client in this repository.
 
