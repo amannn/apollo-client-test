@@ -15,7 +15,7 @@
   "author": "Jan Amann <jan@amann.me>",
   "license": "MIT",
   "dependencies": {
-    "apollo-client": "0.1.6",
+    "apollo-client": "0.3.13",
     "babel-cli": "6.5.1",
     "babel-core": "6.5.1",
     "babel-eslint": "4.1.8",

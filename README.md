@@ -15,3 +15,4 @@ This project consists of the server at [amannn/apollo-server-test](https://githu
 8. `cd apollo-client-test`
 9. `npm install`
 10. `npm start`
+11. Open `localhost:8080` in your browser

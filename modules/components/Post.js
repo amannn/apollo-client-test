@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
+import gql from 'apollo-client/gql'
 import { Link } from 'react-router'
 import { connect } from 'react-apollo'
 
 class Post extends Component {
 
   onSaveTitleClick = e => {
-    let { mutations, postQuery } = this.props
+    let { mutations } = this.props
     e.preventDefault()
     let title = this.refs.title.value
     mutations.updatePost({ title })
       .then(({ errors }) => {
         if (errors) console.log(errors)
-        else postQuery.refetch()
       }, err => {
         console.log(err)
       })
@@ -50,9 +50,10 @@ class Post extends Component {
 function mapQueriesToProps({ ownProps }) {
   return {
     postQuery: {
-      query: `
+      query: gql`
         query getPost($postId: Int!) {
           post(postId: $postId) {
+            id
             title
             text
             tags
@@ -72,7 +73,7 @@ function mapQueriesToProps({ ownProps }) {
 function mapMutationsToProps({ ownProps }) {
   return {
     updatePost: variables => ({
-      mutation: `
+      mutation: gql`
         mutation updatePost($postId: Int!, $title: String) {
           updatePost(id: $postId, title: $title) {
             id

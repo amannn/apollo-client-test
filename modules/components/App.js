@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import gql from 'apollo-client/gql'
 import { Link } from 'react-router'
 import { connect } from 'react-apollo'
 
@@ -103,7 +104,7 @@ export default class App extends Component {
 function mapQueriesToProps() {
   return {
     authorsQuery: {
-      query: `
+      query: gql`
         {
           authors {
             id
@@ -119,7 +120,7 @@ function mapQueriesToProps() {
       forceFetch: true
     },
     cheesyTipQuery: {
-      query: `
+      query: gql`
         {
           cheesyTip: getFortuneCookie
         }
@@ -132,7 +133,7 @@ function mapQueriesToProps() {
 function mapMutationsToProps() {
   return {
     createAuthor: (firstName, lastName) => ({
-      mutation: `
+      mutation: gql`
         mutation createAuthor($firstName: String, $lastName: String) {
           createAuthor(firstName: $firstName, lastName: $lastName) {
             id
@@ -144,7 +145,7 @@ function mapMutationsToProps() {
       variables: { firstName, lastName }
     }),
     createPost: authorId => ({
-      mutation: `
+      mutation: gql`
         mutation createPost($authorId: Int!) {
           createPost(authorId: $authorId) {
             id
@@ -155,7 +156,7 @@ function mapMutationsToProps() {
       variables: { authorId }
     }),
     deleteAuthors: () => ({
-      mutation: `
+      mutation: gql`
         mutation {
           deleteAuthors {
             id
